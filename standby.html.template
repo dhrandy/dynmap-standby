@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1222">
+  <meta name="robots" content="noindex,nofollow">
+  <title>The world is sleeping</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, Segoe UI, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 30px 16px; color: #ede7cd; background: #0d1222; overflow-x: hidden; }
+    /* Only gradients and CSS blocks: no external assets or image requests. */
+    .sky { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% 108%, #394255 0, transparent 58%), linear-gradient(#0b1122, #17233a 75%, #202e36); }
+    .stars, .stars::before, .stars::after { position: absolute; width: 3px; height: 3px; background: #f4e3ad; box-shadow: 42px 80px #ddd4bb, 114px 35px #e4d2a9, 189px 146px #d6ddda, 242px 60px #f4e3ad, 315px 190px #f4e3ad, 385px 29px #ddd4bb, 462px 130px #e4d2a9, 540px 52px #d6ddda, 630px 180px #f4e3ad, 720px 71px #ddd4bb, 790px 155px #e4d2a9, 880px 35px #f4e3ad, 940px 215px #d6ddda, 1050px 95px #ddd4bb, 1140px 30px #e4d2a9, 1220px 160px #f4e3ad; }
+    .stars { top: 11%; left: 3%; opacity: .8; }
+    .stars::before, .stars::after { content: ""; left: 12px; top: 270px; opacity: .65; }
+    .stars::after { left: -16px; top: 550px; opacity: .45; }
+    .ridge { position: absolute; bottom: 0; width: 100%; height: 18%; min-height: 105px; background: linear-gradient(#243b38 0 14%, #1b312e 14% 28%, #162622 28%); clip-path: polygon(0 35%, 7% 35%, 7% 15%, 16% 15%, 16% 48%, 28% 48%, 28% 25%, 43% 25%, 43% 42%, 57% 42%, 57% 8%, 69% 8%, 69% 33%, 78% 33%, 78% 19%, 91% 19%, 91% 45%, 100% 45%, 100% 100%, 0 100%); opacity: .6; }
+    main { position: relative; width: min(580px, 100%); padding: clamp(25px, 6vw, 48px); background: #17211f; border: 7px solid #527638; border-bottom-color: #4b3323; box-shadow: inset 0 0 0 2px #294226, 0 9px 0 #251d1a, 12px 20px 0 #080e18, 0 25px 60px #0009; }
+    main::before { content: ""; position: absolute; top: -7px; left: 0; right: 0; height: 7px; background: repeating-linear-gradient(90deg, #71924a 0 22px, #527638 22px 38px, #8ba45b 38px 48px); }
+    .badge { color: #e7bc73; font: 700 11px/1.4 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .15em; text-transform: uppercase; }
+    .night { height: 114px; margin: 20px 0 12px; position: relative; }
+    .moon { position: absolute; left: 10px; top: 12px; width: 78px; height: 78px; background: #f1d690; box-shadow: 8px 0 #c2a971, 0 0 0 8px #efd18a12, 0 0 40px #eab86755; }
+    .moon::before, .moon::after { content: ""; position: absolute; width: 12px; height: 12px; background: #c9ad73; opacity: .5; left: 16px; top: 22px; }
+    .moon::after { left: 48px; top: 52px; width: 9px; height: 9px; }
+    .torch { position: absolute; right: 12px; top: 38px; width: 13px; height: 48px; background: linear-gradient(90deg, #50311c 0 35%, #8b5d2c 35% 70%, #50311c 70%); box-shadow: 0 0 20px 10px #ed8f3028; }
+    .torch::before { content: ""; position: absolute; width: 21px; height: 27px; left: -4px; top: -20px; background: linear-gradient(#ffe093 0 30%, #f7ad48 30% 70%, #c96a30 70%); clip-path: polygon(35% 0, 80% 0, 80% 25%, 100% 25%, 100% 75%, 80% 75%, 80% 100%, 10% 100%, 10% 75%, 0 75%, 0 35%, 35% 35%); filter: drop-shadow(0 0 10px #f9ad55); }
+    h1 { margin: 0 0 15px; color: #f4eacb; font: 900 clamp(27px, 6.7vw, 43px)/1.16 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: -.065em; text-shadow: 3px 4px 0 #273b2d; }
+    p { color: #bdc7b9; line-height: 1.65; margin: 0 0 24px; }
+    .address { display: block; padding: 14px 16px; margin-bottom: 23px; border: 2px solid #607947; background: #0d1715; color: #f1d690; font: 700 15px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; overflow-wrap: anywhere; }
+    button { appearance: none; border: 2px solid #a4ba73; background: #668247; color: #f7f1d7; font: 800 14px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; padding: 13px 19px; box-shadow: inset 2px 2px #8faa62, inset -2px -2px #40542e, 4px 4px 0 #0b120e; cursor: pointer; }
+    button:hover, button:focus-visible { background: #7e9b56; outline: 2px solid #f1d690; outline-offset: 3px; }
+    small { display: block; color: #98aa96; margin-top: 25px; font-size: 12px; line-height: 1.5; }
+    @media (max-width: 400px) { .torch { right: 6px; } .night { height: 104px; } }
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><div class="stars"></div><div class="ridge"></div></div>
+  <main>
+    <span class="badge">Map offline / world asleep</span>
+    <div class="night" aria-hidden="true"><div class="moon"></div><div class="torch"></div></div>
+    <h1>The world is sleeping.</h1>
+    <p>The live map comes back when the server wakes. Join the world to wake it, then try the map again in a moment.</p>
+    <span class="address">${JOIN_ADDRESS}</span>
+    <button type="button" onclick="window.location.reload()">Try the map again</button>
+    <small>No map tiles are available while the server is asleep.</small>
+  </main>
+</body>
+</html>
