@@ -41,7 +41,7 @@
     <span class="badge">Map offline / world asleep</span>
     <div class="night" aria-hidden="true"><div class="moon"></div><div class="torch"></div></div>
     <h1>The world is sleeping.</h1>
-    <p>The live map comes back when the server wakes. Join the world to wake it, then try the map again in a moment.</p>
+    <p>This page won't update by itself. Join the world to wake the server, then hit the button or refresh once it's awake.</p>
     <span class="address">${JOIN_ADDRESS}</span>
     <button type="button" onclick="window.location.reload()">Try the map again</button>
     <small>No map tiles are available while the server is asleep.</small>

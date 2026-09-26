@@ -20,6 +20,7 @@ until curl -fsS "http://127.0.0.1:$port/healthz" | grep -qx ok; do
     sleep 1
 done
 curl -fsS "http://127.0.0.1:$port/" | grep -q 'The world is sleeping'
+curl -fsS "http://127.0.0.1:$port/" | grep -q "This page won.t update by itself"
 if curl -fsS "http://127.0.0.1:$port/" | grep -q 'class="address"'; then
     echo "Address box unexpectedly present" >&2
     exit 1
@@ -29,5 +30,9 @@ if curl -fsS "http://127.0.0.1:$port/" | grep -q 'your-server.example.com'; then
     exit 1
 fi
 curl -fsS "http://127.0.0.1:$port/robots.txt" | grep -q "Disallow: /"
+curl -fsSI "http://127.0.0.1:$port/" | grep -qi "X-Content-Type-Options: nosniff"
+curl -fsSI "http://127.0.0.1:$port/" | grep -qi "Referrer-Policy: no-referrer"
+curl -fsSI "http://127.0.0.1:$port/" | grep -qi "X-Frame-Options: DENY"
+curl -fsSI "http://127.0.0.1:$port/" | grep -qi "Permissions-Policy: camera=(), microphone=(), geolocation=()"
 curl -fsS "http://127.0.0.1:$port/" | grep -q "noindex,nofollow"
 printf 'Standby and proxy health checks passed.\n'
