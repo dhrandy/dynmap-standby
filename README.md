@@ -11,6 +11,7 @@ Docker Compose builds the image from this repository. Paste this block into `com
 ```yaml
 services:
   dynmap-standby:
+    container_name: dynmap-standby
     build: https://github.com/dhrandy/dynmap-standby.git#main
     ports:
       - "${STANDBY_PORT:-42879}:8080"
